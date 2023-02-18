@@ -1,0 +1,43 @@
+Body {
+    background-color: #e7fdf8;
+}
+.foto1{
+    /*max-width: 80px;*/
+    display: flex;
+    justify-content: center;
+}
+
+/* .container{
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+@media (max-width: 400px){
+	.container{
+		width: 90%;
+	}
+} */
+
+.foto2{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+
+}
+html * {
+    font-family: sans-serif;
+}
+img{
+    max-width: 200px;
+}
+
+.textoTitulo{
+    text-align: center;
+}
+h5{
+    text-align: center;
+}

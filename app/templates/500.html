@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{super () }}
+    Ups! Error 500
+{% endblock %}
+
+{% block content %}
+    <br>    
+    <h1 class="textoTitulo">¡Lo Sentimos! Tenemos un problema en uno de nuestros servidores</h1>
+    <br>
+    <h2 class="textoTitulo">Estamos trabajando en ello.</h2>
+    <div class="foto1">
+        <img src="{{ url_for('static', filename='images/BNPP_CARDIF_BL_V_Q.png') }}" alt="BNP" width="40">
+    </div>
+    <div class="foto2">
+        <img src="{{ url_for('static', filename='images/error500png') }}" alt="img404">
+    </div>
+    <br>
+    <p><h5>{{error}}</h5></p>
+    
+{% endblock %}

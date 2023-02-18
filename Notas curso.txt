@@ -1,0 +1,21 @@
+-----------Comando para saber las dependencias de Flask:
+pip freeze
+
+-----------Comando para instalar las dependencias desde el archivo requeriments
+pip install -r requirements.txt
+
+
+----Declarar una nueva variable de ambiente que en este casio se va a llamar FLASK_APP
+
+FLASK_APP=main.py
+
+------ ver el contenido de la variable
+
+echo $FLASK_APP
+
+
+------Debugging en Flask (Cambiar el codigo y que se vea el cambio reflejados en el servidor)
+
+--- GET CODIGO 302 que es el de reedireccion
+---llegamos a la ruta Hello donde nos devolvio un codigo 200
+
