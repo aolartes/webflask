@@ -5,8 +5,7 @@ from app.forms import LoginForm
 from . import auth
 from app.sql_service2 import Connection
 from app.models import UserModel,UserData
-
-
+import re
 
 
 @auth.route('/login',methods=['GET','POST'])
