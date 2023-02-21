@@ -1,6 +1,6 @@
 from app.models import UserData,UserModel
 from app.sql_service2 import Connection
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash,check_password_hash
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -58,6 +58,15 @@ data_base = os.getenv('data_base')
 
 print(data_base)
 
+clave = '123456aA!'
+print (clave)
+clave_oculta = generate_password_hash(clave)
+print (clave_oculta)
+
+if check_password_hash(clave_oculta,'123456aA'):
+    print ('desecriptado')
+else:
+    print('no es la clave')
 
 # def pruebita():
 #     conn=Connection.connection()

@@ -4,21 +4,23 @@
     <li class="list-group-item" style="background-color: #defade">
 
         <span class="badge">{{ todo['done'] }}</span>
-        
+
         <form method="POST">
             {% for key,value in todo.items() %}
                 {% if key == 'todos' %}
-                <b>Descripción: </b>{{ value }}
-                <button type="button" class="btn btn-light">
-                    {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id=todo['idtodos'])) }}
-                </button>
-                <button type="button" class="btn btn-light">
-                    {{ wtf.quick_form(update_form, action=url_for('update', todo_id=todo['idtodos'],done=todo['done'])) }}
-                </button>
+                    <label>
+                        <input type="checkbox" name="valores_seleccionados" value="{{ key }}">
+                    </label>
+                    <b>Descripción: </b>{{ value }}
                 {% endif %}
             {% endfor %}
-            
         </form>
+        <button type="button" class="btn btn-light">
+            {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id=todo['idtodos'])) }}    
+        </button>
+        <button type="button" class="btn btn-light">
+            {{ wtf.quick_form(update_form, action=url_for('update', todo_id=todo['idtodos'],done=todo['done'])) }}
+        </button>
 
 
             {{todo['idtodos']}}
