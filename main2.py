@@ -1,9 +1,9 @@
 from app.models import UserData,UserModel
 from app.sql_service2 import Connection
-from werkzeug.security import generate_password_hash,check_password_hash
+from werkzeug.security import generate_password_hash
 import os
-from dotenv import load_dotenv
-load_dotenv()
+import re
+
 
 
 def get_todos(connection=Connection.connection,user_id = 'colartes'):
@@ -54,19 +54,17 @@ print (valor)
 
 #Connection.update_todo(Connection.connection,todo_id=163,done=1)
 
-data_base = os.getenv('data_base')
+data_base = os.getenv('asdasd')
 
 print(data_base)
 
-clave = '123456aA!'
-print (clave)
-clave_oculta = generate_password_hash(clave)
-print (clave_oculta)
+cadena = 'alvaro olarte'
 
-if check_password_hash(clave_oculta,'123456aA'):
-    print ('desecriptado')
+if re.match("^[a-zA-Z0-9_]*$",cadena):
+    print ('la cadena no tiene espacios')
 else:
-    print('no es la clave')
+    print ('la cadena tiene espacios')
+
 
 # def pruebita():
 #     conn=Connection.connection()
