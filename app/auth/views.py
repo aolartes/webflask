@@ -6,6 +6,9 @@ from . import auth
 from app.sql_service2 import Connection
 from app.models import UserModel,UserData
 
+
+
+
 @auth.route('/login',methods=['GET','POST'])
 def login():
     login_form = LoginForm()
@@ -53,23 +56,27 @@ def signup():
         username =signup_form.username.data
         password = signup_form.password.data
 
-        user_doc = Connection.get_userc(connection=Connection.connection,user_id=username)#Connection.get_userc(connection=Connection.connection,user_id='username')
+        if re.match("^[a-zA-Z0-9_]*$",username):
 
-        if user_doc is None:
-            password_hash = generate_password_hash(password)
-            user_data = UserData(username,password_hash)
-            Connection.user_put(user_data,Connection.connection)
+            user_doc = Connection.get_userc(connection=Connection.connection,user_id=username)#Connection.get_userc(connection=Connection.connection,user_id='username')
 
-            user = UserModel(user_data)
+            if user_doc is None:
+                password_hash = generate_password_hash(password)
+                user_data = UserData(username,password_hash)
+                Connection.user_put(user_data,Connection.connection)
 
-            login_user(user)
+                user = UserModel(user_data)
 
-            flash('Bienvenido nuevo usuario')
+                login_user(user)
 
-            return redirect(url_for('hello'))
-        
+                flash('Bienvenido nuevo usuario')
+
+                return redirect(url_for('hello'))
+            
+            else:
+                flash(f'el usuario {username.title()} ya existe')
         else:
-            flash(f'el usuario {username.title()} ya existe')
+            flash(f'¡El usuario {username} que intentas crear no puede contener espacios ni caracteres especiales!')
 
     return render_template('signup.html',**context)
 

@@ -4,7 +4,7 @@ from flask import request,make_response,redirect, render_template,session,url_fo
 from flask_login import login_required,current_user
 #from app.sql_service import Connection
 from app.sql_service2 import Connection
-from app.forms import TodoForm, DeleteTodoForm,CheckBoxForm,UpdateTodoForm
+from app.forms import TodoForm, DeleteTodoForm,UpdateTodoForm
 
 app = create_app()
 
@@ -66,7 +66,6 @@ def hello():
     username = current_user.id #session.get('username')
     todo_form=TodoForm()
     delete_form=DeleteTodoForm()
-    check_box_form = CheckBoxForm()
     update_form = UpdateTodoForm()
     context={
         'user_ip': user_ip,
@@ -75,7 +74,6 @@ def hello():
         'username':username,
         'todo_form':todo_form,
         'delete_form':delete_form,
-        'check_box_form':check_box_form,
         'update_form': update_form
     }
 
@@ -102,6 +100,7 @@ def update(todo_id,done):
     Connection.update_todo(Connection.connection,todo_id=todo_id)
     flash('Tu tarea se ha actualizado con éxito')
     return redirect(url_for('hello'))
+
 
 
 """iniciar con video 34: Editar tareas"""
