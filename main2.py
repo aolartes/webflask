@@ -65,6 +65,15 @@ if re.match("^[a-zA-Z0-9_]*$",cadena):
 else:
     print ('la cadena tiene espacios')
 
+aos = Connection.get_todos(connection=Connection.connection,user_id='AOLARTES')
+print (type(aos))
+print (aos)
+for key,value in aos.items():
+    if key == 'todos':
+        value
+    
+
+
 
 # def pruebita():
 #     conn=Connection.connection()
