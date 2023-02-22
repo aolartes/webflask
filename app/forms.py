@@ -16,7 +16,3 @@ class DeleteTodoForm(FlaskForm):
 
 class UpdateTodoForm(FlaskForm):
     submit = SubmitField('Actualizar')
-
-class MyForm(FlaskForm):
-    checkbox = BooleanField('Seleccionar elementos')
-    submit = SubmitField('Eliminar')

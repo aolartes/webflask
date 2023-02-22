@@ -4,7 +4,7 @@ from flask import request,make_response,redirect, render_template,session,url_fo
 from flask_login import login_required,current_user
 #from app.sql_service import Connection
 from app.sql_service2 import Connection
-from app.forms import TodoForm, DeleteTodoForm,UpdateTodoForm,MyForm
+from app.forms import TodoForm, DeleteTodoForm,UpdateTodoForm
 
 app = create_app()
 
@@ -66,8 +66,7 @@ def hello():
     username = current_user.id #session.get('username')
     todo_form=TodoForm()
     delete_form=DeleteTodoForm()
-    update_form = UpdateTodoForm()
-    my_form = MyForm()
+    update_form = UpdateTodoForm()    
     todos=Connection.get_todos(connection=Connection.connection,user_id=username)
     context={
         'user_ip': user_ip,
@@ -76,8 +75,7 @@ def hello():
         'username':username,
         'todo_form':todo_form,
         'delete_form':delete_form,
-        'update_form': update_form,
-        'my_form' : my_form,
+        'update_form': update_form,        
     }
 
     if todo_form.validate_on_submit():
@@ -85,13 +83,6 @@ def hello():
         flash('Tu tarea se creo con éxito')
         
         return redirect(url_for('hello'))
-
-    if my_form.validate_on_submit():
-        variable = my_form.checkbox
-        pass
-    
-
-
 
 
     return render_template('hello.html',**context)

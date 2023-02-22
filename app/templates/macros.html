@@ -1,43 +1,24 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% macro render_todo(todo,delete_form,update_form,my_form) %} 
+{% macro render_todo(todo,delete_form,update_form) %} 
     <li class="list-group-item" style="background-color: #defade">
-
-        <span class="badge">{{ todo['done'] }}</span>
-
-        <form method="POST">
-            {{ my_form.hidden_tag() }}
+        <form method="POST">            
             {% for key,value in todo.items() %}
                 {% if key == 'todos' %}
                     <b>Descripción: </b>{{ value }}
                 {% endif %}
-                <label>
-                    {{ my_form.checkbox(value=key) }}{{ key }}:{{ value }}
-                </label>
                 <br>
-            {% endfor %}
-            {{ my_form.submit() }}
-        </form>
+            {% endfor %}                    
         <button type="button" class="btn btn-light">
             {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id=todo['idtodos'])) }}    
         </button>
         <button type="button" class="btn btn-light">
             {{ wtf.quick_form(update_form, action=url_for('update', todo_id=todo['idtodos'],done=todo['done'])) }}
         </button>
-
-
-            {{todo['idtodos']}}
-            
+        <span class="badge">{{ todo['done'] }}</span>
+            {{todo['idtodos']}}            
             {{todo}}
         </form>
-            
-        
-        
-          
-
-
-
-          
     </li>
 {% endmacro %}
 
