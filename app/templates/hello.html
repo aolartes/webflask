@@ -28,7 +28,15 @@
             {{macros.render_todo(todo,delete_form,update_form)}}
         {% endfor %}
     </ul>
-
+    <ul class="list-group">
+        
+            {{macros.list(todos,delete_form,update_form)}}
+        
+        <br>
+        {{todos}}
+        
+    </ul>
+    
     <!-- <h1>
         Una palabra del traductor a sus amigos
 Yo ofrezco

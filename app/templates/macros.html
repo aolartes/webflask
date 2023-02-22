@@ -2,24 +2,61 @@
 
 {% macro render_todo(todo,delete_form,update_form) %} 
     <li class="list-group-item" style="background-color: #defade">
-        <form method="POST">            
+        <span class="badge">{{ todo['done'] }}</span>
+        
+        <form action="/todos/deletes" method="POST">
+            <ul>
             {% for key,value in todo.items() %}
                 {% if key == 'todos' %}
+                    <label>
+                        <input type="checkbox" name="valores_seleccionados" value="{{todo['idtodos']}}">
+                    </label>
                     <b>Descripción: </b>{{ value }}
                 {% endif %}
-                <br>
-            {% endfor %}                    
+            {% endfor %}
+            </ul>
+            
+        </form>                 
         <button type="button" class="btn btn-light">
             {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id=todo['idtodos'])) }}    
         </button>
         <button type="button" class="btn btn-light">
             {{ wtf.quick_form(update_form, action=url_for('update', todo_id=todo['idtodos'],done=todo['done'])) }}
         </button>
-        <span class="badge">{{ todo['done'] }}</span>
-            {{todo['idtodos']}}            
-            {{todo}}
-        </form>
-    </li>
+        {{todo['idtodos']}}            
+        {{todo.items()}}
+        <br>
+        {{todo}}
+        
+    </li>    
+
 {% endmacro %}
 
+
+
+{% macro list(todos,delete_form,update_form) %}
+    <li class="list-group-item" style="background-color: #defade">
+        <form action="/todos/deletes" method="POST">
+            <ul class="list-group">
+                {% for todo in todos%}                
+                    <br><input type="checkbox" name="valores" value="{{todo['idtodos']}}"><b>Descripción: </b> {{todo['todos']}}                    
+                    <span class="badge">{{ todo['done'] }}</span>
+                    <br>                    
+                    <button type="button" class="btn btn-light">
+                        {{ wtf.quick_form(delete_form, action=url_for('delete', todo_id=todo['idtodos'])) }}    
+                    </button>
+                    <button type="button" class="btn btn-light">
+                        {{ wtf.quick_form(update_form, action=url_for('update', todo_id=todo['idtodos'],done=todo['done'])) }}
+                    </button>
+                    <hr>
+                {%endfor%}
+                <br>
+                <br>                
+                <button type="submit">Enviar</button>
+                       
+        </form>
+    </ul> 
+    </li>
+    {{todos}}
+{% endmacro %}
 

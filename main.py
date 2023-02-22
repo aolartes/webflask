@@ -101,6 +101,12 @@ def update(todo_id,done):
     flash('Tu tarea se ha actualizado con éxito')
     return redirect(url_for('hello'))
 
+@app.route('/todos/deletes', methods=["POST"])
+def deletes():
+    valores_seleccionados = []
+    valores = request.form.getlist("valores")
+    return render_template("resultado.html", valores=valores)
+
 
 
 """iniciar con video 34: Editar tareas"""
