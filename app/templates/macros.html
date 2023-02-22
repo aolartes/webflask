@@ -1,6 +1,6 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
-{% macro render_todo(todo,delete_form,update_form) %} 
+<!-- {% macro render_todo(todo,delete_form,update_form) %} 
     <li class="list-group-item" style="background-color: #defade">
         <span class="badge">{{ todo['done'] }}</span>
         
@@ -30,7 +30,7 @@
         
     </li>    
 
-{% endmacro %}
+{% endmacro %} -->
 
 
 
@@ -52,11 +52,10 @@
                 {%endfor%}
                 <br>
                 <br>                
-                <button type="submit">Enviar</button>
-                       
+                <button type="submit">Eliminar Seleccionados</button>                       
         </form>
     </ul> 
     </li>
-    {{todos}}
+    <!-- {{todos}} -->
 {% endmacro %}
 

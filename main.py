@@ -105,7 +105,24 @@ def update(todo_id,done):
 def deletes():
     valores_seleccionados = []
     valores = request.form.getlist("valores")
-    return render_template("resultado.html", valores=valores)
+    print(valores)
+    if valores != []:
+        for num in valores:
+            valores_seleccionados.append(int(num))
+        valor=request.form.getlist("valores")
+        num_str =  ",".join(valor)
+        Connection.delete_todo(connection=Connection.connection,todo_id=num_str)
+
+        flash('Tareas eliminadas con exito!')
+        redirect(url_for('hello'))
+#        return render_template("resultado.html", valores=valores_seleccionados,numero=num_str)
+    else:
+        flash('Debe seleccionar una tarea para poder elimiarlas')
+        redirect(url_for('hello'))
+
+    return redirect(url_for('index'))
+
+    
 
 
 

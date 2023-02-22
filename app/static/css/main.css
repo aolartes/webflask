@@ -41,3 +41,7 @@ img{
 h5{
     text-align: center;
 }
+hr {
+    border: 1px solid #c7bebe; /* establecer un borde sólido de 1px de ancho */
+    border-color: #a8a8a8; /* establecer un color de borde más oscuro (#333) */
+  }
