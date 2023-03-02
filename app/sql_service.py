@@ -6,7 +6,7 @@ class Connection:
         s = 'aolartes.database.windows.net'
         d = 'DB_AOS'
         u = 'aolartes'
-        p = '123456aA!'
+        p = 'XXXXXXX'
         cstr = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+s+';DATABASE='+d+';UID='+u+';PWD='+ p
         conn = pyodbc.connect(cstr)
         cursor = conn.cursor()
