@@ -5,7 +5,7 @@ import pyodbc
 s = 'localhost'
 d = 'DB_AOS'
 u = 'sa'
-p = '123456aA!'
+p = 'XXXXXXXXX'
 cstr = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+s+';DATABASE='+d+';UID='+u+';PWD='+ p
 conn = pyodbc.connect(cstr)
 
